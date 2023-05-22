@@ -1,0 +1,51 @@
+body{background-color:#EFC4C4;}
+.content-body{
+    width: 1400px;
+    height: 800px;
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 9%;
+}
+label{
+    width: 200px;
+    height: 35px;
+    border-radius: 10px; 
+    background-color: red; 
+    color: white;
+    border: solid black;
+    font-style: bold;
+}
+
+nav{width: 100%;}
+
+.content-usuario{
+    margin-top: 40px;
+    margin-left: 70%;}
+
+.content-logo{
+    width: 236px;
+    height: 150px; 
+    margin-left: 3%;  
+}
+.header-content{display: flex;}
+.content-nav{
+    margin-left: 5%;
+    display: flex;}
+.btn-danger{width: 320px;
+}
+.sect-content{ 
+    width: 220px;
+    margin-top: 15px;
+    margin-left: 70%;
+    margin-bottom: 25px;
+    display: flex;}
+.table-form{
+    margin-left: 12%;
+    margin-right: 12%;
+}
+.paginacion{
+    margin-top: 40px;
+    margin-left: 45%;}
+
+
+    

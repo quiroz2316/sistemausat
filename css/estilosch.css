@@ -1,0 +1,7 @@
+header{background-color: #343434}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color:rgb(192, 192, 192) !important;
+}

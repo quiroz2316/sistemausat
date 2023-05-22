@@ -1,0 +1,126 @@
+{% extends "maestra.html" %}
+{% block titulo %}Listar Facultades {% endblock %}
+{% block subtitul %}Gestionar Facultades {% endblock %}
+{% block contenido %}
+
+<div class="">
+  <div>
+    <ul class="nav nav-underline border-bottom">
+      <li class="nav-item">
+        <a style="margin-left: 50px;  color: red !important;" class="nav-link" href="#">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="nav2" href="#">Listar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="nav2" href="{{url_for('agregar_facultad')}}">Nuevo</a>
+      </li>
+    </ul>
+  </div>
+  <div class="table p-5">
+    <table class="table table-light table-hover border" id="tabla">
+      <thead>
+        <tr class="container text-center">
+          <th scope="col align-items-center">Facultad</th>
+          <th scope="col align-items-center">Descripción</th>
+          <th scope="col align-items-center">Estado</th>
+          <th scope="col align-items-center">Editar</th>
+          <th scope="col align-items-center">Eliminar</th>
+          <th scope="col align-items-center" id="estado1">Dar Baja</th>
+        </tr>
+      </thead>
+      <tbody onload="formato()">
+        {% for facultad in facultades %}
+        <tr class="container text-center">
+          <td class="infoTabla" scope="row align-items-center">{{facultad[1]}}</td>
+          <td class="infoTabla" scope="row align-items-center">{{facultad[2]}}</td>
+          <td class="infoTabla" scope="row align-items-center">{{facultad[3]}}</td>
+          <td scope="row align-items-center"><button style="border: none;" type="button" data-bs-toggle="modal"
+              data-bs-target="#exampleModal1" type="button"><img style="width: 30px; height: 30px;"
+                src="{{url_for('static', filename='lapiz-rojo.png')}}" alt=""></button>
+          <td scope="row align-items-center">
+            <button style="border: none;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              onclick="enviar_modal('{{facultad[0]}}')"><img style="width: 30px; height: 30px;"
+                src="{{url_for('static', filename='basura-rojo.png')}}" alt=""></button>
+          </td>
+          <td scope="row align-items-center">
+            <form action="{{url_for('dar_baja')}}" method="POST">
+              <input type="hidden" name="id" value="{{facultad[0]}}">
+              <button style="border: none;" type="button">Baja</button>
+          </td>
+  </div>
+  <form action="{{url_for('actualizar_facultad')}}" class="formulario" method="post">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Editar facultad</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex flex-column align-items-center container-fluid p-4">
+                <input type="hidden" id="idEditar" name="id">
+                <div class="d-flex col-12 align-items-center mb-2 justify-content-center p-3">
+                  <div class="col">
+                    <labelfor="name" class="form-label">Nombre de facultad:</label>
+                  </div>
+                  <div class="col">
+                    <input type="name" class="form-control" name="nombreFa" value="{{facultad[1]}}">
+                  </div>
+                </div>
+                <div class=" container-fluid d-flex align-items-between">
+                  <label for="textarea">Descripción</label>
+                  <textarea id="textarea" rows="5">{{facultad[2]}}</textarea>
+                </div>
+                <div class="col-12 p-3">
+                  <select id="estado" name="estado">
+                    <option>No vigente</option>
+                    <option>Vigente</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success ms-3">Modificar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="">Atención</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Estás seguro de eliminar el facultad de id<span id="exampleModalLabel">{{facultad[0]}}</span>?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <form action="{{ url_for('eliminar_facultad') }}" method="POST">
+              <input type="hidden" id="idrecibir" name="id" >
+              <button class="btn btn-success">Eliminar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endfor %}
+</tbody>
+</table>
+
+
+
+</div>
+
+{% endblock %}

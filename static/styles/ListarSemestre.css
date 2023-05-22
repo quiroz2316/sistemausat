@@ -1,0 +1,93 @@
+.cont {
+    background-color: white;
+    margin: 0;
+}
+
+.logo {
+    height: 100px;
+    width: 180px;
+    margin-right: auto;
+}
+
+.user {
+    margin-right: 30px;
+}
+
+.content-usuario {
+    display: flex;
+    margin-right: 0px;
+}
+
+.nombreUsuario {
+    text-align: center;
+    margin-top: 5px;
+}
+
+label {
+    margin-top: 5px;
+    text-align: center;
+    width: 150px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #E33439;
+    color: white;
+    font-style: bold;
+}
+
+.nav-link {
+    display: flex;
+}
+p{
+    margin-left: 20px; 
+    text-align: center;
+    margin-bottom: 5px;
+    color: black;
+}
+#nav2{
+    color: #E33439;
+    margin-left: 50px;
+}
+table{
+    border-radius: 5vh;
+}
+
+footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+#barra{
+    height: 43px !important;
+}
+.formulario{
+    max-width: 800px;
+    background: rgb(236, 236, 236);
+    border-radius: 5vh;
+}
+.sec{
+    height: 80vh;
+}
+nav{
+    height: 19vh;
+}
+.infoTabla {
+    text-align: start !important;
+    padding-left: 15px !important;
+}
+#desc{
+    background-color: rgb(236, 236, 236);
+    color: black !important;
+}
+textarea{
+    width: 194.5px;
+    height: 100px;
+}
+.contador{
+    display: flex;
+}
+#botones-pag{
+    margin: 1cm;
+}
