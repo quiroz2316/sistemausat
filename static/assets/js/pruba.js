@@ -55,7 +55,7 @@ elemento.onclick = function () {
   offset = limit * contador;
   contador++;
   pElement.textContent = contador;
-  
+  if (contador
   $.ajax({
     url: "/semestres/b",
     type: "POST",
@@ -66,9 +66,11 @@ elemento.onclick = function () {
     }
   });
   setTimeout(estadop, 30);
+  setTimeout(revisarVacia,15);
 }
 var elemento1 = document.getElementById("atras");
-elemento1.onclick = function () {
+elemento1.onclick = retroceder;
+function retroceder() {
   var botonElement = document.getElementById("atras");
   var pElement = document.getElementById("contador");
   limit = comboBox.value;
@@ -107,8 +109,7 @@ var estados = document.getElementById('estado');
 var estado = document.getElementById('boton-estado');
 // Código que deseas ejecutar para cada fila
 
-function estadop() {
-  var filas = document.getElementsByTagName("tr");
+function estadop() {;
   var tabla = document.getElementById("tabla");
   var numeroFilas = tabla.rows.length;
   for (var i = 0; i < numeroFilas; i++) {
@@ -144,3 +145,7 @@ function estadop() {
 }
 window.onload = estadop;
 
+function revisarVacia(){
+ 
+
+}
