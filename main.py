@@ -11,8 +11,9 @@ def semestres():
     variable1=5
     variable2=0
     semestres = cont_sem.obtener_semestre_index(variable1,variable2)
+    cant = cont_sem.cant_semestres()
     editSemestre = None
-    return render_template("/semestre/ListarSemestre.html", semestres = semestres, editSemestre = editSemestre)
+    return render_template("/semestre/ListarSemestre.html", semestres = semestres, editSemestre = editSemestre, cant = cant)
 @app.route("/semestres/b", methods=["POST"])
 def semestres1():
     limit = request.form.get("limit")
@@ -24,7 +25,7 @@ def semestres1():
 def semestre_editar(id):
     semestres = cont_sem.obtener_semestre()
     semestre = cont_sem.buscar_semestre_id(id)
-    print(semestre)
+    #print(semestre)
     return render_template("/semestre/ListarSemestre.html", semestres = semestres, editSemestre = semestre)
 
 
@@ -94,9 +95,9 @@ def actualizar_semestre():
 
 @app.route("/eliminar_semestre", methods=["POST"])
 def eliminar_semestre():
-    cont_sem.eliminar_semestre(request.form["id"])
-    print(request.form["id"])
-    print("Eliminado")
+    id = request.form["id"]
+    print("El id del semestre que se quiere eliminar es", id)
+    cont_sem.eliminar_semestre(id)
     return redirect("/semestres")
 
 #facultad
@@ -111,7 +112,7 @@ def facultades():
 def facultad_editar(id):
     facultades = cont_fac.obtener_facultad()
     facultad = cont_fac.buscar_facultad_id(id)
-    print(facultad)
+    #print(facultad)
     return render_template("/facultad/listarFacultad.html", facultades = facultades, editFacultad = facultad)
 
 @app.route("/facultades", methods=["POST"])

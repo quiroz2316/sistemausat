@@ -23,7 +23,7 @@ def obtener_facultad():
     with conexion.cursor() as cursor:
         cursor.execute("SELECT id,nombre,descripcion ,CASE estado WHEN 1 THEN 'Vigente' ELSE 'No vigente' END AS estado FROM facultad")
         facultad = cursor.fetchall()
-        print(facultad)
+        #print(facultad)
     conexion.close()
     return facultad
 

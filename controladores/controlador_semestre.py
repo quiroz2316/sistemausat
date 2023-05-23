@@ -23,7 +23,7 @@ def obtener_semestre():
     with conexion.cursor() as cursor:
         cursor.execute("SELECT id,nombre,DATE_FORMAT(fechaI, '%d-%m-%Y')as fechaI,DATE_FORMAT(fechaF, '%d-%m-%Y')as fechaF ,CASE estado WHEN 1 THEN 'Vigente' ELSE 'No vigente' END AS estado FROM semestre_academico")
         semestre = cursor.fetchall()
-        print(semestre)
+        #print(semestre)
     conexion.close()
     return semestre
 def obtener_semestre_index(limit,offset):
@@ -32,9 +32,10 @@ def obtener_semestre_index(limit,offset):
     with conexion.cursor() as cursor:
         cursor.execute("SELECT id,nombre,DATE_FORMAT(fechaI, '%d-%m-%Y')as fechaI,DATE_FORMAT(fechaF, '%d-%m-%Y')as fechaF ,CASE estado WHEN 1 THEN 'Vigente' ELSE 'No vigente' END AS estado FROM semestre_academico limit {} offset {}".format(limit, offset))
         semestre = cursor.fetchall()
-        print(semestre)
+        #print(semestre)
     conexion.close()
     return semestre
+
 def actualizar_semestre(nombre,fechai, fechaf, estado, id):
     conexion = obtener_conexion()
     with conexion.cursor() as cursor:
@@ -82,3 +83,13 @@ def eliminar_semestre(id):
         cursor.execute("DELETE FROM semestre_academico WHERE id = %s", (id))
     conexion.commit()
     conexion.close()
+    
+def cant_semestres():
+    conexion=obtener_conexion()
+    cant = 0
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT COUNT(*) FROM semestre_academico")
+        cant = cursor.fetchone()
+    conexion.close()
+    print(cant[0])
+    return cant
